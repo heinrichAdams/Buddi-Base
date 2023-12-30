@@ -10,6 +10,10 @@ typedef struct
     SDL_Renderer* renderer;
     SDL_Window* window;
 
+    // Frame Control
+    long previousFrame;
+    float remainder;
+
     // Keyboard Array
     int keys[KEYBOARD_SIZE];
 
