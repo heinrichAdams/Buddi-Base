@@ -46,4 +46,8 @@ void Initialize_Buddi(Window_Handler* window_handler)
     // INITIALIZE SDL_IMAGE
     IMG_Init(IMG_INIT_PNG|IMG_INIT_JPG);
 
+    // INTITIALIZE FRAME COUNTER
+    window_handler->previousFrame = SDL_GetTicks();
+    window_handler->remainder = 0;
+
 }
