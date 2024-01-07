@@ -4,7 +4,7 @@
 
 extern Window_Handler window_handler;
 
-void GetInput(void)
+void GetInput(bool* continue_execution_case)
 {
     // Create Event Listener
     SDL_Event event;
@@ -15,7 +15,7 @@ void GetInput(void)
         switch(event.type)
         {
             case SDL_QUIT:
-                exit(0);
+                *(continue_execution_case) = false;
                 break;
             default:
                 break;

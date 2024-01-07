@@ -3,7 +3,7 @@
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_video.h>
 
-void Initialize_Buddi(Window_Handler* window_handler)
+bool Initialize_Buddi(Window_Handler* window_handler)
 {
     int windowFlags = 0;
     int renderFlags = SDL_RENDERER_ACCELERATED|SDL_RENDERER_PRESENTVSYNC;
@@ -12,8 +12,8 @@ void Initialize_Buddi(Window_Handler* window_handler)
 
     if(SDL_Init(SDL_INIT_VIDEO) < 0)
     {
-        printf("[COULDNT INITIALIZE SDL VIDEO]");
-		exit(1);
+        printf("\n\n---ERROR: COULDNT INITIALIZE SDL VIDEO---\n\n");
+		return false;
     }
 
     // INITIALIZE WINDOW
@@ -27,8 +27,8 @@ void Initialize_Buddi(Window_Handler* window_handler)
 
     if(!window_handler->window)
     {
-        printf("COULDNT CREATE SDL WINDOW\n");
-		exit(1);
+        printf("\n\n---ERROR: COULDNT CREATE SDL WINDOW---\n\n");
+		return false;
     }
 
     // USE SDL HINT TO SET SCALING METHOD
@@ -39,15 +39,21 @@ void Initialize_Buddi(Window_Handler* window_handler)
     
     if(!window_handler->renderer)
     {
-        printf("COULDNT CREATE SDL RENDERER\n");
-		exit(1);
+        printf("\n\n---ERROR: COULDNT CREATE SDL RENDERER---\n\n");
+		return false;
     }
 
     // INITIALIZE SDL_IMAGE
-    IMG_Init(IMG_INIT_PNG|IMG_INIT_JPG);
+    if(IMG_Init(IMG_INIT_PNG|IMG_INIT_JPG) < 0)
+    {
+        printf("\n\n---ERROR: COULDNT INITIALIZE SDL_IMAGE---\n\n");
+		return false;
+    }
 
     // INTITIALIZE FRAME COUNTER
     window_handler->previousFrame = SDL_GetTicks();
     window_handler->remainder = 0;
+
+    return true;
 
 }
