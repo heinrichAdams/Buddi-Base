@@ -8,7 +8,7 @@ extern Window_Handler window_handler;
 void UpdateBackBuffer(void)
 {
 
-    SDL_SetRenderDrawColor(window_handler.renderer, 10, 10, 50, 255);
+    SDL_SetRenderDrawColor(window_handler.renderer, 5, 5, 10, 255);
     SDL_RenderClear(window_handler.renderer);
 
 }
