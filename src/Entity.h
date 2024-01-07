@@ -11,6 +11,7 @@ typedef struct
     int yDirection;
     int health;
     SDL_Texture* sprite;
+    Entity* next_entity;
 } Entity;
 
 typedef struct
@@ -21,6 +22,7 @@ typedef struct
     int yDirection;
     int health;
     SDL_Texture* sprite;
+    Projectile* next_projectile;
 } Projectile;
 
 

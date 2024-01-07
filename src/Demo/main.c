@@ -72,7 +72,7 @@ bool Setup(void)
     bullet.xPos = 0;
     bullet.yPos = 0;
     bullet.health = 0;
-    bullet.sprite = LoadTextureFromFile("assets/debug/set 01/O.png");
+    bullet.sprite = LoadTextureFromFile("assets/debug/set 01/bullet.png");
     // DEBUG
 
     atexit(Clean_Up);
