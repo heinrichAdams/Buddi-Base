@@ -10,8 +10,6 @@
 // GLOBAL VARIABLES
 // ---------------------------------------------
 Window_Handler window_handler;
-Entity player;
-Projectile bullet;
 bool isRunning = false;
 // ---------------------------------------------
 
@@ -90,30 +88,7 @@ void Update(void)
     LimitFramerate(&window_handler.previousFrame, &window_handler.remainder);
 
     // Debug
-    if(window_handler.keys[SDL_SCANCODE_W])
-    {
-        player.yPos -= 5;
-    }
-    if(window_handler.keys[SDL_SCANCODE_S])
-    {
-        player.yPos += 5;
-    }
-    if(window_handler.keys[SDL_SCANCODE_A])
-    {
-        player.xPos -= 5;
-    }
-    if(window_handler.keys[SDL_SCANCODE_D])
-    {
-        player.xPos += 5;
-    }
-    if(window_handler.keys[SDL_SCANCODE_SPACE] && bullet.health == 0)
-    {
-        bullet.xPos = player.xPos;
-        bullet.yPos = player.yPos;
-        bullet.xDirection = 10;
-        bullet.yDirection = 0;
-        bullet.health = 1;
-    }
+    
 
     // Bullet Debug Logic
     bullet.xPos += bullet.xDirection;
